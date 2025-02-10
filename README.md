@@ -1,6 +1,6 @@
-# Quick Deployment API for Online Store
+# Quick Deployment API for Online Store (Serverless)
 
-This is an open-source solution for quickly deploying an API for an online store, featuring integrations with:
+This is an open-source solution for quickly deploying an API for an online store, fit for serverless systems, featuring integrations with:
 
 - **Google Maps** for address autocomplete
 - **Shippo** for shipping cost calculation
