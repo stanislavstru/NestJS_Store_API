@@ -1,0 +1,59 @@
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>Payment Successful</title>
+    <style>
+      body { font-family: Arial, sans-serif; background-color: #f8f9fa; margin:
+      0; padding-top: 20px; padding-bottom: 20px; } .email-container {
+      max-width: 600px; margin-left: auto; margin-right: auto; background:
+      #ffffff; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px
+      10px rgba(0, 0, 0, 0.1); padding: 20px; } .header { text-align: center;
+      padding-bottom: 20px; border-bottom: 1px solid #eee; } .header h1 { color:
+      black; } .content { padding: 20px; line-height: 1.6; } .footer {
+      text-align: center; font-size: 12px; color: #888; margin-top: 20px; }
+      .button { display: inline-block; padding: 10px 20px; background-color:
+      black; color: #ffffff; text-decoration: none; text-transform: uppercase;
+      margin-top: 20px; font-weight: 600; border-radius: 0.125rem; } .center{
+      text-align: center; }
+    </style>
+  </head>
+  <body>
+    <div class='email-container'>
+      <div class='header'>
+        <h1>{{title}}</h1>
+      </div>
+      <div class='content'>
+        <p>Hi {{customerName}},</p>
+        <p>We're getting your order ready to be shipped. We will notify you when
+          it has been sent. We hope you like it!
+        </p>
+        <p><strong>Payment Details:</strong></p>
+        <ul>
+          <li><strong>Order number:</strong> {{orderNumber}}</li>
+          <li><strong>Subtotal:</strong> {{subtotal}}{{currencySymbol}}</li>
+          <li><strong>Delivery:</strong> {{delivery}}{{currencySymbol}}</li>
+          <li><strong>Estimated Tax:</strong> {{tax}}{{currencySymbol}}</li>
+          <li><strong>Date:</strong> {{date}}</li>
+        </ul>
+        <p><strong>Order Details:</strong></p>
+        <ul>
+          {{#each orderItems}}
+            <li>
+              <strong>{{this.name}}</strong>. Price: {{this.price}}{{../currencySymbol}}. Quantity: {{this.quantity}}
+            </li>
+          {{/each}}
+        </ul>
+        <br />
+        <p>If you have any questions about your payment or need further
+          assistance, feel free to contact us.</p>
+        <div class='center'>
+          <a href='{{supportUrl}}' class='button'>Contact Support</a>
+        </div>
+      </div>
+      <div class='footer'>
+        <p>&copy; {{year}} {{companyName}}. All rights reserved.</p>
+      </div>
+    </div>
+  </body>
+</html>

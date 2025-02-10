@@ -1,0 +1,2565 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/api/v1": {
+      "get": {
+        "operationId": "AppController_getHello_api/v1",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "App"
+        ]
+      }
+    },
+    "/api/v1/auth/google": {
+      "get": {
+        "operationId": "AuthController_googleLogin_api/v1",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Auth"
+        ]
+      }
+    },
+    "/api/v1/auth/google/callback": {
+      "get": {
+        "operationId": "AuthController_googleCallback_api/v1",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Auth"
+        ]
+      }
+    },
+    "/api/v1/users": {
+      "get": {
+        "operationId": "UsersController_findAll_api/v1",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Users"
+        ]
+      }
+    },
+    "/api/v1/users/{id}": {
+      "get": {
+        "operationId": "UsersController_findById_api/v1",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Users"
+        ]
+      }
+    },
+    "/api/v1/products": {
+      "post": {
+        "operationId": "ProductsController_create_api/v1",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateProductsDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductsEntity"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Products"
+        ]
+      },
+      "get": {
+        "operationId": "ProductsController_findAll_api/v1",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProductsEntity"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Products"
+        ]
+      }
+    },
+    "/api/v1/products/{id}": {
+      "get": {
+        "operationId": "ProductsController_findOneById_api/v1",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductsEntity"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Products"
+        ]
+      },
+      "patch": {
+        "operationId": "ProductsController_update_api/v1",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProductsDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductsEntity"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Products"
+        ]
+      },
+      "delete": {
+        "operationId": "ProductsController_delete_api/v1",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductsEntity"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Products"
+        ]
+      }
+    },
+    "/api/v1/products/slug/{slug}": {
+      "get": {
+        "operationId": "ProductsController_findOneBySlug_api/v1",
+        "parameters": [
+          {
+            "name": "slug",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductsEntity"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Products"
+        ]
+      }
+    },
+    "/api/v1/products/find": {
+      "post": {
+        "operationId": "ProductsController_findByIds_api/v1",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProductsEntity"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Products"
+        ]
+      }
+    },
+    "/api/v1/file/upload-to-vercel-blob": {
+      "post": {
+        "operationId": "FileUploadController_uploadFileToVercelBlob_api/v1",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Upload File"
+        ]
+      }
+    },
+    "/api/v1/feedback-requests": {
+      "post": {
+        "operationId": "FeedbackRequestsController_create_api/v1",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateFeedbackRequestsDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeedbackRequestsEntity"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Feedback Requests"
+        ]
+      },
+      "get": {
+        "operationId": "FeedbackRequestsController_findAll_api/v1",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FeedbackRequestsEntity"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Feedback Requests"
+        ]
+      }
+    },
+    "/api/v1/feedback-requests/{id}": {
+      "get": {
+        "operationId": "FeedbackRequestsController_findOne_api/v1",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeedbackRequestsEntity"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Feedback Requests"
+        ]
+      },
+      "patch": {
+        "operationId": "FeedbackRequestsController_update_api/v1",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FeedbackRequestsEntity"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeedbackRequestsEntity"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Feedback Requests"
+        ]
+      }
+    },
+    "/api/v1/main-config": {
+      "post": {
+        "operationId": "MainConfigController_create_api/v1",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateMainConfigDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MainConfigDto"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Main Config"
+        ]
+      },
+      "get": {
+        "operationId": "MainConfigController_findMany_api/v1",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MainConfigDto"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Main Config"
+        ]
+      }
+    },
+    "/api/v1/main-config/{id}": {
+      "get": {
+        "operationId": "MainConfigController_findOne_api/v1",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MainConfigDto"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Main Config"
+        ]
+      },
+      "patch": {
+        "operationId": "MainConfigController_update_api/v1",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateMainConfigDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MainConfigDto"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Main Config"
+        ]
+      }
+    },
+    "/api/v1/main-config/key/{config_key}": {
+      "get": {
+        "operationId": "MainConfigController_findByKey_api/v1",
+        "parameters": [
+          {
+            "name": "config_key",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MainConfigDto"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Main Config"
+        ]
+      }
+    },
+    "/api/v1/images": {
+      "get": {
+        "operationId": "ImagesController_findAll_api/v1",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ImagesEntity"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Images"
+        ]
+      }
+    },
+    "/api/v1/images/{id}": {
+      "get": {
+        "operationId": "ImagesController_findOne_api/v1",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImagesEntity"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Images"
+        ]
+      }
+    },
+    "/api/v1/product-categories": {
+      "post": {
+        "operationId": "ProductCategoriesController_create_api/v1",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateProductCategoriesDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductCategoriesEntity"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Product Categories"
+        ]
+      },
+      "get": {
+        "operationId": "ProductCategoriesController_findAll_api/v1",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProductCategoriesEntity"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Product Categories"
+        ]
+      }
+    },
+    "/api/v1/product-categories/{id}": {
+      "get": {
+        "operationId": "ProductCategoriesController_findOne_api/v1",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductCategoriesEntity"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Product Categories"
+        ]
+      },
+      "patch": {
+        "operationId": "ProductCategoriesController_update_api/v1",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProductCategoriesDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductCategoriesEntity"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Product Categories"
+        ]
+      }
+    },
+    "/api/v1/shipping/calculate": {
+      "post": {
+        "operationId": "ShippingController_routerToDefineTypeShippingCalculate_api/v1",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Delivery Options"
+        ]
+      }
+    },
+    "/api/v1/shipping/get-label/{shipmentId}": {
+      "get": {
+        "operationId": "ShippingController_getLabel_api/v1",
+        "parameters": [
+          {
+            "name": "shipmentId",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Delivery Options"
+        ]
+      }
+    },
+    "/api/v1/cart/find": {
+      "post": {
+        "operationId": "CartController_cartInfoByProductIds_api/v1",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CartInfo"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Cart"
+        ]
+      }
+    },
+    "/api/v1/payments/to-payment-system": {
+      "post": {
+        "operationId": "PaymentsController_routerToPaymentSystem_api/v1",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentIntentRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentIntentResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Payments variants"
+        ]
+      }
+    },
+    "/api/v1/payments/webhook": {
+      "post": {
+        "operationId": "PaymentsController_handleWebhook_api/v1",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Payments variants"
+        ]
+      }
+    },
+    "/api/v1/orders": {
+      "post": {
+        "operationId": "OrdersController_create_api/v1",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOrdersDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateOrdersDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Orders"
+        ]
+      },
+      "get": {
+        "operationId": "OrdersController_findAll_api/v1",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrdersEntity"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Orders"
+        ]
+      }
+    },
+    "/api/v1/orders/{id}": {
+      "get": {
+        "operationId": "OrdersController_findOne_api/v1",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrdersEntity"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Orders"
+        ]
+      }
+    },
+    "/api/v1/pre-orders": {
+      "post": {
+        "operationId": "PreOrdersController_create_api/v1",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePreOrdersDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PreOrdersEntity"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Pre Orders"
+        ]
+      },
+      "get": {
+        "operationId": "PreOrdersController_findAll_api/v1",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PreOrdersEntity"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Pre Orders"
+        ]
+      }
+    },
+    "/api/v1/pre-orders/{id}": {
+      "get": {
+        "operationId": "PreOrdersController_findOne_api/v1",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PreOrdersEntity"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Pre Orders"
+        ]
+      },
+      "patch": {
+        "operationId": "PreOrdersController_update_api/v1",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePreOrdersDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PreOrdersEntity"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "tags": [
+          "Pre Orders"
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "Custom Admin Panel API",
+    "description": "",
+    "version": "1.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "securitySchemes": {
+      "bearer": {
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "type": "http",
+        "name": "JWT",
+        "description": "Enter JWT token",
+        "in": "header"
+      }
+    },
+    "schemas": {
+      "CreateProductsDto": {
+        "type": "object",
+        "properties": {
+          "slug": {
+            "type": "string"
+          },
+          "position": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "images": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "social_media_links": {
+            "type": "object",
+            "nullable": true
+          },
+          "title": {
+            "type": "string"
+          },
+          "short_description": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "category_id": {
+            "type": "string",
+            "nullable": true
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "item_weight_primary": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "item_weight_secondary": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "item_length": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "item_width": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "item_height": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          },
+          "is_coming_soon": {
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "required": [
+          "slug",
+          "position",
+          "images",
+          "title",
+          "short_description",
+          "quantity",
+          "item_weight_primary",
+          "item_weight_secondary",
+          "item_length",
+          "item_width",
+          "item_height",
+          "price"
+        ]
+      },
+      "ProductsEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "position": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "images": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "social_media_links": {
+            "type": "object",
+            "nullable": true
+          },
+          "title": {
+            "type": "string"
+          },
+          "short_description": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "category_id": {
+            "type": "string",
+            "nullable": true
+          },
+          "product_categories": {
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ProductCategoriesEntity"
+              }
+            ]
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "item_weight_primary": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "item_weight_secondary": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "item_length": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "item_width": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "item_height": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          },
+          "is_new": {
+            "type": "boolean"
+          },
+          "is_available": {
+            "type": "boolean"
+          },
+          "is_frozen": {
+            "type": "boolean"
+          },
+          "is_coming_soon": {
+            "type": "boolean"
+          },
+          "is_deleted": {
+            "type": "boolean"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id",
+          "slug",
+          "position",
+          "images",
+          "social_media_links",
+          "title",
+          "short_description",
+          "description",
+          "category_id",
+          "quantity",
+          "item_weight_primary",
+          "item_weight_secondary",
+          "item_length",
+          "item_width",
+          "item_height",
+          "price",
+          "is_new",
+          "is_available",
+          "is_frozen",
+          "is_coming_soon",
+          "is_deleted",
+          "created_at",
+          "updated_at"
+        ]
+      },
+      "ProductCategoriesEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "position": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "image_url": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "products": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductsEntity"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "position",
+          "image_url",
+          "created_at",
+          "updated_at"
+        ]
+      },
+      "UpdateProductsDto": {
+        "type": "object",
+        "properties": {
+          "slug": {
+            "type": "string"
+          },
+          "position": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "images": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "social_media_links": {
+            "type": "object",
+            "nullable": true
+          },
+          "title": {
+            "type": "string"
+          },
+          "short_description": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "category_id": {
+            "type": "string",
+            "nullable": true
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "item_weight_primary": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "item_weight_secondary": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "item_length": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "item_width": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "item_height": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          },
+          "is_coming_soon": {
+            "type": "boolean",
+            "default": false
+          }
+        }
+      },
+      "CreateFeedbackRequestsDto": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "content": {
+            "type": "string",
+            "nullable": true
+          },
+          "hide_content": {
+            "type": "string",
+            "nullable": true
+          },
+          "user_full_name": {
+            "type": "string",
+            "nullable": true
+          },
+          "user_email": {
+            "type": "string",
+            "nullable": true
+          },
+          "user_address": {
+            "type": "string",
+            "nullable": true
+          },
+          "user_phone": {
+            "type": "string",
+            "nullable": true
+          },
+          "from_path": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "FeedbackRequestsEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "content": {
+            "type": "string",
+            "nullable": true
+          },
+          "hide_content": {
+            "type": "string",
+            "nullable": true
+          },
+          "user_full_name": {
+            "type": "string",
+            "nullable": true
+          },
+          "user_email": {
+            "type": "string",
+            "nullable": true
+          },
+          "user_address": {
+            "type": "string",
+            "nullable": true
+          },
+          "user_phone": {
+            "type": "string",
+            "nullable": true
+          },
+          "from_path": {
+            "type": "string",
+            "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "update_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "processed": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "content",
+          "hide_content",
+          "user_full_name",
+          "user_email",
+          "user_address",
+          "user_phone",
+          "from_path",
+          "created_at",
+          "update_at",
+          "processed"
+        ]
+      },
+      "CreateMainConfigDto": {
+        "type": "object",
+        "properties": {
+          "config_key": {
+            "type": "string",
+            "description": "Key of the configuration setting",
+            "enum": [
+              "currency_code",
+              "currency_symbol",
+              "product_weight_primary_unit",
+              "product_weight_secondary_unit",
+              "product_dimensions_unit",
+              "shipping_calculating_service",
+              "payment_service",
+              "business_name",
+              "business_company",
+              "business_street1",
+              "business_street2",
+              "business_city",
+              "business_state",
+              "business_zip",
+              "business_country",
+              "business_phone",
+              "business_email"
+            ],
+            "example": "currency_code"
+          },
+          "config_value": {
+            "type": "string",
+            "description": "Value of the configuration setting",
+            "enum": [
+              "usd",
+              "$",
+              "lb",
+              "oz",
+              "in",
+              "shippo",
+              "stripe"
+            ],
+            "example": "usd"
+          }
+        },
+        "required": [
+          "config_key",
+          "config_value"
+        ]
+      },
+      "MainConfigDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "config_key": {
+            "type": "string",
+            "description": "Key of the configuration setting",
+            "enum": [
+              "currency_code",
+              "currency_symbol",
+              "product_weight_primary_unit",
+              "product_weight_secondary_unit",
+              "product_dimensions_unit",
+              "shipping_calculating_service",
+              "payment_service",
+              "business_name",
+              "business_company",
+              "business_street1",
+              "business_street2",
+              "business_city",
+              "business_state",
+              "business_zip",
+              "business_country",
+              "business_phone",
+              "business_email"
+            ],
+            "example": "currency_code"
+          },
+          "config_value": {
+            "type": "string",
+            "description": "Value of the configuration setting",
+            "enum": [
+              "usd",
+              "$",
+              "lb",
+              "oz",
+              "in",
+              "shippo",
+              "stripe"
+            ],
+            "example": "usd"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "update_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id",
+          "config_key",
+          "config_value",
+          "created_at",
+          "update_at"
+        ]
+      },
+      "UpdateMainConfigDto": {
+        "type": "object",
+        "properties": {
+          "config_key": {
+            "type": "string",
+            "description": "Key of the configuration setting",
+            "enum": [
+              "currency_code",
+              "currency_symbol",
+              "product_weight_primary_unit",
+              "product_weight_secondary_unit",
+              "product_dimensions_unit",
+              "shipping_calculating_service",
+              "payment_service",
+              "business_name",
+              "business_company",
+              "business_street1",
+              "business_street2",
+              "business_city",
+              "business_state",
+              "business_zip",
+              "business_country",
+              "business_phone",
+              "business_email"
+            ],
+            "example": "currency_code"
+          },
+          "config_value": {
+            "type": "string",
+            "description": "Value of the configuration setting",
+            "enum": [
+              "usd",
+              "$",
+              "lb",
+              "oz",
+              "in",
+              "shippo",
+              "stripe"
+            ],
+            "example": "usd"
+          }
+        },
+        "required": [
+          "config_key",
+          "config_value"
+        ]
+      },
+      "ImagesEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "image_url": {
+            "type": "string"
+          },
+          "image_type": {
+            "type": "string"
+          },
+          "image_size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "update_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id",
+          "image_url",
+          "image_type",
+          "image_size",
+          "created_at",
+          "update_at"
+        ]
+      },
+      "CreateProductCategoriesDto": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "position": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "image_url": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "title",
+          "position",
+          "image_url"
+        ]
+      },
+      "UpdateProductCategoriesDto": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "position": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "image_url": {
+            "type": "string"
+          }
+        }
+      },
+      "CartInfo": {
+        "type": "object",
+        "properties": {}
+      },
+      "CustomerContactDto": {
+        "type": "object",
+        "properties": {
+          "country": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "type": "string"
+          },
+          "address2": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "zip": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "country",
+          "firstName",
+          "lastName",
+          "address",
+          "address2",
+          "city",
+          "state",
+          "zip",
+          "phone",
+          "email"
+        ]
+      },
+      "PaymentIntentProductDataDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "PaymentIntentPriceDataDto": {
+        "type": "object",
+        "properties": {
+          "product_data": {
+            "$ref": "#/components/schemas/PaymentIntentProductDataDto"
+          },
+          "unit_amount": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "product_data",
+          "unit_amount"
+        ]
+      },
+      "PaymentIntentLineItemDto": {
+        "type": "object",
+        "properties": {
+          "price_data": {
+            "description": "Price data",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PaymentIntentPriceDataDto"
+              }
+            ]
+          },
+          "quantity": {
+            "type": "number"
+          },
+          "product_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "price_data",
+          "quantity",
+          "product_id"
+        ]
+      },
+      "PaymentIntentShippingDetailsPriceDto": {
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "string"
+          },
+          "currency": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "amount",
+          "currency"
+        ]
+      },
+      "PaymentIntentShippingDetailDeliveryDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "estimatedDays": {
+            "type": "number",
+            "nullable": true
+          },
+          "durationTerms": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "estimatedDays",
+          "durationTerms"
+        ]
+      },
+      "PaymentIntentShippingDetailserviceDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "provider": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "imagesSmall": {
+            "type": "string",
+            "nullable": true
+          },
+          "imagesLarge": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "required": [
+          "id",
+          "provider",
+          "name",
+          "imagesSmall",
+          "imagesLarge"
+        ]
+      },
+      "PaymentIntentShippingDetailsDto": {
+        "type": "object",
+        "properties": {
+          "price": {
+            "$ref": "#/components/schemas/PaymentIntentShippingDetailsPriceDto"
+          },
+          "delivery": {
+            "$ref": "#/components/schemas/PaymentIntentShippingDetailDeliveryDto"
+          },
+          "service": {
+            "$ref": "#/components/schemas/PaymentIntentShippingDetailserviceDto"
+          }
+        },
+        "required": [
+          "price",
+          "delivery",
+          "service"
+        ]
+      },
+      "PaymentIntentFixedAmountDto": {
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "amount"
+        ]
+      },
+      "PaymentIntentDeliveryEstimateDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "PaymentIntentShippingOptionsDto": {
+        "type": "object",
+        "properties": {
+          "fixed_amount": {
+            "$ref": "#/components/schemas/PaymentIntentFixedAmountDto"
+          },
+          "display_name": {
+            "type": "string"
+          },
+          "delivery_estimate": {
+            "$ref": "#/components/schemas/PaymentIntentDeliveryEstimateDto"
+          }
+        },
+        "required": [
+          "fixed_amount",
+          "display_name",
+          "delivery_estimate"
+        ]
+      },
+      "PaymentIntentRequestDto": {
+        "type": "object",
+        "properties": {
+          "customerContact": {
+            "description": "Customer contact",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/CustomerContactDto"
+              }
+            ]
+          },
+          "lineItems": {
+            "description": "Line item array",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PaymentIntentLineItemDto"
+            }
+          },
+          "shippingDetails": {
+            "description": "Shipping details",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PaymentIntentShippingDetailsDto"
+              }
+            ]
+          },
+          "shippingOptions": {
+            "description": "Shipping options array",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PaymentIntentShippingOptionsDto"
+            }
+          }
+        },
+        "required": [
+          "customerContact",
+          "lineItems",
+          "shippingDetails",
+          "shippingOptions"
+        ]
+      },
+      "PaymentIntentResponseDto": {
+        "type": "object",
+        "properties": {
+          "payment_link": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "payment_link"
+        ]
+      },
+      "CreateOrdersDto": {
+        "type": "object",
+        "properties": {
+          "user_id": {
+            "type": "string"
+          },
+          "payment_id": {
+            "type": "string"
+          },
+          "order_status": {
+            "type": "string"
+          },
+          "order_amount_subtotal": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "order_amount_total": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "order_amount_discount": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "order_amount_shipping": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "order_amount_tax": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "order_items": {
+            "type": "object"
+          },
+          "payment_status": {
+            "type": "string"
+          },
+          "shipping_order_id": {
+            "type": "string",
+            "nullable": true
+          },
+          "shipping_details": {
+            "type": "object"
+          },
+          "shipping_options": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "user_id",
+          "payment_id",
+          "order_status",
+          "order_items",
+          "payment_status",
+          "shipping_details",
+          "shipping_options"
+        ]
+      },
+      "PostsEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "user_id": {
+            "type": "string"
+          },
+          "users": {
+            "$ref": "#/components/schemas/UsersEntity"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "content": {
+            "type": "string",
+            "nullable": true
+          },
+          "published": {
+            "type": "boolean"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id",
+          "user_id",
+          "title",
+          "content",
+          "published",
+          "created_at"
+        ]
+      },
+      "OauthSessionsEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "user_id": {
+            "type": "string"
+          },
+          "users": {
+            "$ref": "#/components/schemas/UsersEntity"
+          },
+          "session_id": {
+            "type": "string",
+            "nullable": true
+          },
+          "provider_type": {
+            "type": "string",
+            "nullable": true
+          },
+          "access_token": {
+            "type": "string",
+            "nullable": true
+          },
+          "access_expires_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "refresh_token": {
+            "type": "string",
+            "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id",
+          "user_id",
+          "session_id",
+          "provider_type",
+          "access_token",
+          "access_expires_at",
+          "refresh_token",
+          "created_at"
+        ]
+      },
+      "OrdersEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "user_id": {
+            "type": "string"
+          },
+          "users": {
+            "$ref": "#/components/schemas/UsersEntity"
+          },
+          "payment_id": {
+            "type": "string"
+          },
+          "order_number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "order_status": {
+            "type": "string"
+          },
+          "order_amount_subtotal": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "order_amount_total": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "order_amount_discount": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "order_amount_shipping": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "order_amount_tax": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "order_items": {
+            "type": "object"
+          },
+          "payment_status": {
+            "type": "string"
+          },
+          "shipping_order_id": {
+            "type": "string",
+            "nullable": true
+          },
+          "shipping_details": {
+            "type": "object"
+          },
+          "shipping_options": {
+            "type": "object"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "update_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id",
+          "user_id",
+          "payment_id",
+          "order_number",
+          "order_status",
+          "order_amount_subtotal",
+          "order_amount_total",
+          "order_amount_discount",
+          "order_amount_shipping",
+          "order_amount_tax",
+          "order_items",
+          "payment_status",
+          "shipping_order_id",
+          "shipping_details",
+          "shipping_options",
+          "created_at",
+          "update_at"
+        ]
+      },
+      "UsersEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "first_name": {
+            "type": "string"
+          },
+          "last_name": {
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "nullable": true
+          },
+          "address2": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "state": {
+            "type": "string",
+            "nullable": true
+          },
+          "zip": {
+            "type": "string",
+            "nullable": true
+          },
+          "phone": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "picture": {
+            "type": "string",
+            "nullable": true
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "posts": {
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PostsEntity"
+              }
+            ]
+          },
+          "oauth_sessions": {
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OauthSessionsEntity"
+              }
+            ]
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "update_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "orders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrdersEntity"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "first_name",
+          "last_name",
+          "address",
+          "address2",
+          "city",
+          "state",
+          "zip",
+          "phone",
+          "email",
+          "picture",
+          "roles",
+          "created_at",
+          "update_at"
+        ]
+      },
+      "CreatePreOrdersDto": {
+        "type": "object",
+        "properties": {
+          "product": {
+            "type": "object"
+          },
+          "product_quantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "user_address": {
+            "type": "string"
+          },
+          "user_full_name": {
+            "type": "string"
+          },
+          "user_email": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "required": [
+          "product",
+          "product_quantity",
+          "user_address",
+          "user_full_name",
+          "user_email"
+        ]
+      },
+      "PreOrdersEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "product": {
+            "type": "object"
+          },
+          "product_quantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "user_address": {
+            "type": "string"
+          },
+          "user_full_name": {
+            "type": "string"
+          },
+          "user_email": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "required": [
+          "id",
+          "product",
+          "product_quantity",
+          "user_address",
+          "user_full_name",
+          "user_email",
+          "content"
+        ]
+      },
+      "UpdatePreOrdersDto": {
+        "type": "object",
+        "properties": {
+          "product": {
+            "type": "object"
+          },
+          "product_quantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "user_address": {
+            "type": "string"
+          },
+          "user_full_name": {
+            "type": "string"
+          },
+          "user_email": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      }
+    }
+  }
+}

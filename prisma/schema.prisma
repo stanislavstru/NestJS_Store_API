@@ -1,0 +1,212 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator nestjsDto {
+  provider                        = "prisma-generator-nestjs-dto"
+  output                          = "../src/_dtos"
+  outputToNestJsResourceStructure = true
+  exportRelationModifierClasses   = true
+  reExport                        = true
+  entitySuffix                    = "Entity"
+  prettier                        = true
+}
+
+generator typescriptInterfaces {
+  provider    = "prisma-generator-typescript-interfaces"
+  output      = "../types/types-from-prisma.ts"
+  modelSuffix = "_model_type"
+  enumSuffix  = "_enum"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL") // uses connection pooling
+  directUrl = env("DIRECT_URL") // uses a direct connection
+}
+
+model main_config {
+  id String @id @default(uuid())
+
+  config_key   String
+  config_value String
+
+  created_at DateTime @default(now())
+  update_at  DateTime @updatedAt
+}
+
+model users {
+  id         String  @id @default(uuid())
+  first_name String
+  last_name  String?
+  address    String?
+  address2   String?
+  city       String?
+  state      String?
+  zip        String?
+  phone      String?
+  email      String? @unique(map: "email_unique")
+
+  picture String?
+  roles   String[] @default(["guest"])
+
+  posts          posts?
+  oauth_sessions oauth_sessions?
+
+  created_at DateTime @default(now())
+  update_at  DateTime @updatedAt
+  orders     orders[]
+}
+
+model oauth_sessions {
+  id String @id @default(uuid())
+
+  user_id String @unique
+  users   users  @relation(fields: [user_id], references: [id])
+
+  session_id        String?
+  provider_type     String?
+  access_token      String?
+  access_expires_at DateTime?
+  refresh_token     String?
+  created_at        DateTime  @default(now())
+}
+
+model posts {
+  id String @id @default(uuid())
+
+  user_id String @unique
+  users   users  @relation(fields: [user_id], references: [id])
+
+  title      String?
+  content    String?
+  published  Boolean  @default(false)
+  created_at DateTime @default(now())
+}
+
+model product_categories {
+  id String @id @default(uuid())
+
+  title String
+
+  position Int
+
+  image_url String
+
+  created_at DateTime   @default(now())
+  updated_at DateTime   @updatedAt
+  products   products[]
+}
+
+model products {
+  id   String @id @default(uuid())
+  slug String @unique
+
+  position Int
+
+  images String[]
+
+  social_media_links Json?
+
+  title             String
+  short_description String
+  description       String?
+
+  /// @DtoRelationIncludeId
+  category_id        String?
+  /// @DtoRelationRequired
+  product_categories product_categories? @relation(fields: [category_id], references: [id])
+
+  quantity Int
+
+  item_weight_primary   Int
+  item_weight_secondary Int
+  item_length           Int
+  item_width            Int
+  item_height           Int
+
+  price Decimal
+
+  is_new         Boolean @default(false)
+  is_available   Boolean @default(false)
+  is_frozen      Boolean @default(false)
+  /// @DtoCreateOptional
+  /// @DtoUpdateOptional
+  is_coming_soon Boolean @default(false)
+  is_deleted     Boolean @default(false)
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+model feedback_requests {
+  id String @id @default(uuid())
+
+  title        String?
+  content      String?
+  hide_content String?
+
+  user_full_name String?
+  user_email     String?
+  user_address   String?
+  user_phone     String?
+
+  from_path  String?
+  created_at DateTime @default(now())
+  update_at  DateTime @updatedAt
+  processed  Boolean  @default(false)
+}
+
+model images {
+  id         String   @id @default(uuid())
+  image_url  String
+  image_type String
+  image_size Int
+  created_at DateTime @default(now())
+  update_at  DateTime @updatedAt
+}
+
+model orders {
+  id String @id @default(uuid())
+
+  /// @DtoRelationIncludeId
+  user_id String
+  /// @DtoRelationRequired
+  users   users  @relation(fields: [user_id], references: [id])
+
+  payment_id String @unique
+
+  order_number          Int      @default(autoincrement())
+  order_status          String
+  order_amount_subtotal Decimal?
+  order_amount_total    Decimal?
+  order_amount_discount Decimal?
+  order_amount_shipping Decimal?
+  order_amount_tax      Decimal?
+  order_items           Json
+
+  payment_status String
+
+  shipping_order_id String?
+  shipping_details  Json
+  shipping_options  Json
+
+  created_at DateTime @default(now())
+  update_at  DateTime @updatedAt
+}
+
+model pre_orders {
+  id               String  @id @default(uuid())
+  product          Json
+  product_quantity Int
+  user_address     String
+  user_full_name   String
+  user_email       String
+  content          String?
+}
